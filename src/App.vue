@@ -10,6 +10,4 @@ export default {
 
 <template>
   <Products />
-  <Products />
-  <Products />
 </template>
