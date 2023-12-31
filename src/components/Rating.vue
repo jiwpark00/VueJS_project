@@ -5,7 +5,8 @@ export default {
     return {
       // rating only uses this.initialRating as the initial value;
       // it is disconnected from future prop updates
-      rating: this.initialRating
+      rating: this.initialRating,
+      color: 'orange'
     }
   },
   methods: {
@@ -17,23 +18,23 @@ export default {
 </script>
 <template>
   <h1>Rating: {{ rating }}</h1>
-  <span v-on:click="assignRating(1)">
+  <span :style="{color:color}" v-on:click="assignRating(1)">
     <i v-if="rating >= 1" class="bi bi-star-fill"></i>
     <i v-else class="bi bi-star"></i>
   </span>
-  <span v-on:click="assignRating(2)">
+  <span :style="{color:color}" v-on:click="assignRating(2)">
     <i v-if="rating >= 2" class="bi bi-star-fill"></i>
     <i v-else class="bi bi-star"></i>
   </span>
-  <span v-on:click="assignRating(3)">
+  <span :style="{color:color}" v-on:click="assignRating(3)">
     <i v-if="rating >= 3" class="bi bi-star-fill"></i>
     <i v-else class="bi bi-star"></i>
   </span>
-  <span v-on:click="assignRating(4)">
+  <span :style="{color:color}" v-on:click="assignRating(4)">
     <i v-if="rating >= 4" class="bi bi-star-fill"></i>
     <i v-else class="bi bi-star"></i>
   </span>
-  <span v-on:click="assignRating(5)">
+  <span :style="{color:color}" v-on:click="assignRating(5)">
     <i v-if="rating >= 5" class="bi bi-star-fill"></i>
     <i v-else class="bi bi-star"></i>
   </span>
