@@ -1,15 +1,15 @@
 <script>
-import Products from './components/Products.vue';
+import UserForm from './components/UserForm.vue';
 
 export default {
   components: {
-    Products
+    UserForm
   }
 }
 </script>
 
 <template>
   <div>
-    <Products />
+    <UserForm />
   </div>
 </template>``
