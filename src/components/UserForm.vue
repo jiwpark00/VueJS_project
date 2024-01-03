@@ -2,30 +2,49 @@
 export default {
   data() {
     return {
-      email: "",
-      password: ""
+      email: '',
+      password: '',
+      validEmail: false,
+      validPassword: false,
+      emailMessage: '',
+      passwordMessage: ''
+    }
+  },
+  methods: {
+    onSubmit(e) {
+      this.validEmail = false;
+      if (this.email.length < 6) {
+        this.emailMessage = "Email should be minimum of 6 characters";
+      }
+      else if (this.email.indexOf(' ') >= 0) {
+        this.emailMessage = 'Email cannot contain spaces';
+      }
+      else {
+        this.emailMessage = "";
+        this.validEmail = true;
+      }
+      if (this.validEmail) {
+        alert('Email:' + this.email + '\nPassword:' + this.password);
+      }
+      else {
+        console.log(this.emailMessage);
+        alert(this.emailMessage);
+      }
     }
   }
 }
 </script>
 <template>
-  <form>
-    <form>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input v-model="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input v-model="password" type="password" class="form-control" id="exampleInputPassword1">
-      </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+  <form @submit.prevent="onSubmit">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input v-model="email" type="email" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input v-model="password" type="password" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   <br>
   <div class="card">
