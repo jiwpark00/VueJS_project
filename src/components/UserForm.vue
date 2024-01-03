@@ -23,12 +23,28 @@ export default {
         this.emailMessage = "";
         this.validEmail = true;
       }
-      if (this.validEmail) {
-        alert('Email:' + this.email + '\nPassword:' + this.password);
+
+      this.validPassword = false;
+      if (this.password.length < 6) {
+        this.passwordMessage = "Password should be minimum 6 characters";
+      }
+      else if (this.password.indexOf(' ') >= 0) {
+        this.passwordMessage = "Password cannot contain spaces";
       }
       else {
-        console.log(this.emailMessage);
-        alert(this.emailMessage);
+        this.passwordMessage = '';
+        this.validPassword = true;
+      }
+
+
+      if (this.validEmail && this.validPassword) {
+        this.email = "";
+        this.password = "";
+        this.validEmail = false;
+        this.validPassword = false;
+      }
+      else {
+        alert(this.emailMessage + '\n' + this.passwordMessage);
       }
     }
   }
@@ -40,9 +56,15 @@ export default {
       <label for="exampleInputEmail1" class="form-label">Email address</label>
       <input v-model="email" type="email" class="form-control">
     </div>
+    <div v-if="emailMessage.length > 0" class="alert alert-danger" role="alert">
+      {{  emailMessage }}
+    </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
       <input v-model="password" type="password" class="form-control">
+    </div>
+    <div v-if="passwordMessage.length > 0" class="alert alert-danger" role="alert">
+      {{  passwordMessage }}
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
